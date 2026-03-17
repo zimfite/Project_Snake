@@ -1,0 +1,113 @@
+﻿<Window x:Class="Project_Snake.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Snake"
+        mc:Ignorable="d"
+        Title="Змейка228" Height="450" Width="800"
+        Icon="images/icon.jpg"
+        WindowStartupLocation="CenterScreen">
+
+
+    <Window.Resources>
+        <Style x:Key="SettingsTextStyle" TargetType="TextBlock">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="0,0,200,-10"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+
+        <Style x:Key="CheckBox" TargetType="CheckBox">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Margin" Value="0,0,200,-10"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+
+        <Style x:Key="SettingsButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="132"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Foreground"  Value="white"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="button" 
+                            Background="SeaGreen" 
+                            BorderBrush="Green" 
+                            BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="button" Property="Background" Value="ForestGreen"/>
+                                <Setter TargetName="button" Property="BorderBrush" Value="DarkGreen"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="button" Property="Background" Value="DarkGreen"/>
+                                <Setter TargetName="button" Property="BorderBrush" Value="DarkSlateGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Viewbox Stretch="Uniform" Grid.ColumnSpan="3">
+            <Image Source="images/settingsmenu.jpg" RenderTransformOrigin="0.5,0.5" Margin="-286,-172,-195,-37" Width="934"/>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform">
+            <StackPanel Width="277" Height="195" Margin="0,34,0,16">
+                <Border BorderBrush="DarkGreen" Opacity="0.80" CornerRadius="4" Background="YellowGreen" BorderThickness="1" HorizontalAlignment="Center" Height="180" VerticalAlignment="Center" Width="277"/>
+            </StackPanel>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform">
+            <StackPanel Width="769" Height="274" Margin="20,0,0,0">
+                <TextBlock Style="{StaticResource SettingsTextStyle}" Margin="25,0.2,0,20" FontSize="40" FontWeight="Bold"><Run Text="Настройки"/></TextBlock>
+                <TextBlock Style="{StaticResource SettingsTextStyle}"><Run Text="Громкость музыки"/></TextBlock>
+                <TextBlock Style="{StaticResource SettingsTextStyle}"><Run Text="Звук нажатия кнопок"/></TextBlock>
+                <TextBlock Style="{StaticResource SettingsTextStyle}"><Run Text="Звук кликов"/></TextBlock>
+            </StackPanel>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform">
+            <DockPanel Margin="18,85,-160,97" Height="147" Width="150">
+                <TextBox Text="{Binding Value, ElementName=slider, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontWeight="Bold" DockPanel.Dock="Right" BorderThickness="1.5" BorderBrush="ForestGreen" TextAlignment="Center" Width="21" Height="21" Margin="0,-51,6,0"/>
+                <Slider TickPlacement="BottomRight" IsSnapToTickEnabled="True" Maximum="10" Minimum="0" x:Name="slider" DockPanel.Dock="Left" Width="117" Height="75"/>
+            </DockPanel>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform">
+            <CheckBox Margin="447,210,312,193" x:Name="checkBox1" BorderBrush="ForestGreen">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform">
+            <CheckBox Margin="336,263,411,140" x:Name="checkBox2" BorderBrush="ForestGreen">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform">
+            <WrapPanel Margin="0,-46,0,26" Width="797" Height="366">
+                <Button Content="Принять" Click="Save_Settings" Style="{StaticResource SettingsButtonStyle}" Margin="417,325,251,0"/>
+                <Button Content="Отмена" Click="Cancel_Settings" Style="{StaticResource SettingsButtonStyle}" Margin="251,-42.2,417,0"/>
+            </WrapPanel>
+        </Viewbox>
+    </Grid>
+</Window>
